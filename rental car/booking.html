@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Book your selected rental car and pay online with RideNest.">
+  <meta name="description" content="Book your selected rental car and pay online with Sherl-Ride.">
   <meta name="author" content="Sherelton Blessing Dennis">
-  <title>RideNest Booking | Complete Reservation and Payment</title>
+  <title>Sherl-Ride Booking | Complete Reservation and Payment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,11 +13,11 @@
 </head>
 <body>
   <header class="site-header" id="top">
-    <p class="announcement">Open daily 6:00 AM to 11:00 PM | Instant pickup in Los Angeles, San Diego, and Las Vegas</p>
+    <p class="announcement">Open daily 6:00 AM to 11:00 PM | Instant pickup in Monrovia, Buchanan, and Gbarnga | Service available across Liberia</p>
     <div class="nav-wrap">
-      <a class="brand" href="index.html" aria-label="RideNest home">
-        <span class="brand-mark" aria-hidden="true">RN</span>
-        <span class="brand-name">RideNest</span>
+      <a class="brand" href="index.html" aria-label="Sherl-Ride home">
+        <span class="brand-mark" aria-hidden="true">SR</span>
+        <span class="brand-name">Sherl-Ride</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
@@ -41,7 +41,13 @@
         <p>Confirm your rental dates, fill in your contact details, and submit payment for your selected car.</p>
       </div>
       <div class="hero-visual" aria-hidden="true">
+        <img class="hero-main-image" src="images/pexels-sl-wong-338694-947031.jpg" alt="">
         <div class="visual-orb"></div>
+        <div class="hero-floaters">
+          <img class="hero-car car-one" src="images/pexels-pixabay-164634.jpg" alt="">
+          <img class="hero-car car-two" src="images/pexels-a2pro-8561771.jpg" alt="">
+          <img class="hero-car car-three" src="images/why-kei-8e2gal_GIE8-unsplash.jpg" alt="">
+        </div>
         <article class="price-card">
           <p class="label">Selected car</p>
           <p class="value" id="selectedCarName">Any available car</p>
@@ -80,9 +86,10 @@
         <label for="pickupCityCheckout">Pickup city</label>
         <select id="pickupCityCheckout" name="pickupCity" required>
           <option value="">Choose a city</option>
-          <option value="Los Angeles">Los Angeles</option>
-          <option value="San Diego">San Diego</option>
-          <option value="Las Vegas">Las Vegas</option>
+          <option value="Monrovia">Monrovia</option>
+          <option value="Buchanan">Buchanan</option>
+          <option value="Gbarnga">Gbarnga</option>
+          <option value="Harper">Harper</option>
         </select>
 
         <label for="pickupDateCheckout">Pickup date</label>
@@ -108,7 +115,7 @@
           <label><input type="checkbox" name="addons" value="gps"> GPS Navigation (+$9/day)</label>
           <label><input type="checkbox" name="addons" value="seat"> Child Seat (+$7/day)</label>
           <label><input type="checkbox" name="addons" value="cover"> Premium Protection (+$16/day)</label>
-          <label><input type="checkbox" name="terms" value="agree" required> I agree to RideNest rental terms and payment authorization.</label>
+          <label><input type="checkbox" name="terms" value="agree" required> I agree to Sherl-Ride rental terms and payment authorization.</label>
         </fieldset>
 
         <button class="button primary" type="submit">Pay Online</button>
@@ -120,11 +127,11 @@
   <footer id="contact">
     <div class="footer-wrap">
       <div>
-        <h2>RideNest Car Rental</h2>
-        <p>support@ridenest.com | +1 (702) 555-0142</p>
+        <h2>Sherl-Ride Car Rental</h2>
+        <p>support@sherl-ride.com | +1 (702) 555-0142</p>
       </div>
       <div>
-        <p>&copy; <span id="currentyear"></span> RideNest. All rights reserved.</p>
+        <p>&copy; <span id="currentyear"></span> Sherl-Ride. All rights reserved.</p>
         <p id="lastModified" class="small"></p>
       </div>
     </div>
