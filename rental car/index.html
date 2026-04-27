@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RideNest Car Rental offers fast online booking, flexible plans, and premium vehicles for city and road trips.">
+  <meta name="author" content="Sherelton Blessing Dennis">
+  <title>RideNest Car Rental | Drive Anywhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Open daily 6:00 AM to 11:00 PM | Instant pickup in Los Angeles, San Diego, and Las Vegas</p>
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="RideNest home">
+        <span class="brand-mark" aria-hidden="true">RN</span>
+        <span class="brand-name">RideNest</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="cars.html">Cars</a></li>
+          <li><a href="index.html#rates">Rates</a></li>
+          <li><a href="index.html#locations">Locations</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a class="button mini" href="cars.html">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">Car rental service</p>
+        <h1>Rent the right car in under two minutes.</h1>
+        <p>From compact city cars to luxury SUVs, RideNest gives you transparent pricing, flexible return times, and support that is always on call.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#booking">Start Booking</a>
+          <a class="button ghost" href="cars.html">Explore Fleet</a>
+        </div>
+        <ul class="hero-stats" aria-label="Service highlights">
+          <li><strong>350+</strong> Active vehicles</li>
+          <li><strong>24/7</strong> Roadside support</li>
+          <li><strong>4.9/5</strong> Client rating</li>
+        </ul>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-orb"></div>
+        <article class="price-card">
+          <p class="label">Starting at</p>
+          <p class="value">$39/day</p>
+          <p class="muted">Unlimited mileage on most plans</p>
+        </article>
+        <article class="route-card">
+          <p class="label">Next available pickup</p>
+          <p class="route">LAX Terminal 4</p>
+          <p class="muted">Today, 25 minutes</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="booking" id="booking" aria-labelledby="booking-title">
+      <div>
+        <p class="eyebrow">Quick reservation</p>
+        <h2 id="booking-title">Check prices and availability</h2>
+        <p>Pick your dates and vehicle class for a quick estimate. For car images and direct booking, open the Cars page.</p>
+      </div>
+      <form id="rentalForm" class="booking-form" method="post" action="#">
+        <label for="pickupCity">Pickup city</label>
+        <select id="pickupCity" name="pickupCity" required>
+          <option value="">Choose a city</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="San Diego">San Diego</option>
+          <option value="Las Vegas">Las Vegas</option>
+        </select>
+
+        <label for="pickupDate">Pickup date</label>
+        <input type="date" id="pickupDate" name="pickupDate" required>
+
+        <label for="returnDate">Return date</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+
+        <label for="vehicleClass">Vehicle class</label>
+        <select id="vehicleClass" name="vehicleClass" required>
+          <option value="">Select class</option>
+          <option value="economy">Economy</option>
+          <option value="suv">SUV</option>
+          <option value="luxury">Luxury</option>
+          <option value="van">Family Van</option>
+        </select>
+
+        <fieldset class="extras">
+          <legend>Add-ons</legend>
+          <label><input type="checkbox" name="addons" value="gps"> GPS Navigation (+$9/day)</label>
+          <label><input type="checkbox" name="addons" value="seat"> Child Seat (+$7/day)</label>
+          <label><input type="checkbox" name="addons" value="cover"> Premium Protection (+$16/day)</label>
+        </fieldset>
+
+        <button class="button primary" type="submit">Get Estimate</button>
+      </form>
+      <p id="bookingMessage" class="booking-message" aria-live="polite"></p>
+    </section>
+
+    <section class="section" id="fleet" aria-labelledby="fleet-title">
+      <div class="section-head">
+        <p class="eyebrow">Fleet</p>
+        <h2 id="fleet-title">Browse our full cars catalog</h2>
+      </div>
+      <div class="fleet-grid">
+        <article class="panel">
+          <h3>Now on a dedicated page</h3>
+          <p>See 10 available rental cars with daily prices, features, and direct booking links.</p>
+          <p class="muted">Choose any car and continue to the booking and online payment form.</p>
+          <a class="button primary section-link" href="cars.html">View All Cars</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="rates" aria-labelledby="rates-title">
+      <article class="panel">
+        <p class="eyebrow">Rates</p>
+        <h2 id="rates-title">Simple pricing. No hidden charges.</h2>
+        <p>Every booking includes liability coverage, 24/7 assistance, and free cancellation up to 24 hours before pickup.</p>
+      </article>
+      <article class="panel checklist">
+        <h3>Included in every rental</h3>
+        <ul>
+          <li>Standard insurance package</li>
+          <li>Real-time trip support</li>
+          <li>Digital contract and invoice</li>
+          <li>Flexible drop-off windows</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section" id="locations" aria-labelledby="locations-title">
+      <div class="section-head">
+        <p class="eyebrow">Locations</p>
+        <h2 id="locations-title">Pickup points built for convenience</h2>
+      </div>
+      <div class="location-grid">
+        <article>
+          <h3>Los Angeles</h3>
+          <p>LAX Terminal 4, Downtown Hub, Santa Monica Desk</p>
+        </article>
+        <article>
+          <h3>San Diego</h3>
+          <p>Airport Center, Gaslamp Branch, La Jolla Marina Point</p>
+        </article>
+        <article>
+          <h3>Las Vegas</h3>
+          <p>Harry Reid Airport, The Strip Office, Summerlin Station</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-wrap">
+      <div>
+        <h2>RideNest Car Rental</h2>
+        <p>support@ridenest.com | +1 (702) 555-0142</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> RideNest. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>

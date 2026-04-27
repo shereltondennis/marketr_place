@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your selected rental car and pay online with RideNest.">
+  <meta name="author" content="Sherelton Blessing Dennis">
+  <title>RideNest Booking | Complete Reservation and Payment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Open daily 6:00 AM to 11:00 PM | Instant pickup in Los Angeles, San Diego, and Las Vegas</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="RideNest home">
+        <span class="brand-mark" aria-hidden="true">RN</span>
+        <span class="brand-name">RideNest</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="cars.html">Cars</a></li>
+          <li><a href="index.html#rates">Rates</a></li>
+          <li><a href="index.html#locations">Locations</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a class="button mini" href="cars.html">All Cars</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Secure booking</p>
+        <h1>Complete your reservation and pay online.</h1>
+        <p>Confirm your rental dates, fill in your contact details, and submit payment for your selected car.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-orb"></div>
+        <article class="price-card">
+          <p class="label">Selected car</p>
+          <p class="value" id="selectedCarName">Any available car</p>
+          <p class="muted">Prefilled from catalog</p>
+        </article>
+        <article class="route-card">
+          <p class="label">Daily rate</p>
+          <p class="route" id="selectedCarRate">$0/day</p>
+          <p class="muted">Final total shown at payment</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="booking booking-layout" aria-labelledby="checkout-title">
+      <div>
+        <p class="eyebrow">Booking form</p>
+        <h2 id="checkout-title">Enter details and payment</h2>
+        <p>All required fields must be completed to process your online payment.</p>
+      </div>
+      <form id="checkoutForm" class="booking-form" method="post" action="#">
+        <label for="carModel">Car</label>
+        <input id="carModel" name="carModel" type="text" required readonly>
+
+        <label for="dailyRate">Daily rate (USD)</label>
+        <input id="dailyRate" name="dailyRate" type="number" min="1" step="1" required readonly>
+
+        <label for="fullName">Full name</label>
+        <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+
+        <label for="pickupCityCheckout">Pickup city</label>
+        <select id="pickupCityCheckout" name="pickupCity" required>
+          <option value="">Choose a city</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="San Diego">San Diego</option>
+          <option value="Las Vegas">Las Vegas</option>
+        </select>
+
+        <label for="pickupDateCheckout">Pickup date</label>
+        <input id="pickupDateCheckout" name="pickupDate" type="date" required>
+
+        <label for="returnDateCheckout">Return date</label>
+        <input id="returnDateCheckout" name="returnDate" type="date" required>
+
+        <label for="cardNumber">Card number</label>
+        <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" minlength="12" maxlength="19" required>
+
+        <label for="cardExpiry">Card expiry (MM/YY)</label>
+        <input id="cardExpiry" name="cardExpiry" type="text" inputmode="numeric" autocomplete="cc-exp" pattern="^(0[1-9]|1[0-2])\/\d{2}$" placeholder="MM/YY" required>
+
+        <label for="cardCvv">CVV</label>
+        <input id="cardCvv" name="cardCvv" type="password" inputmode="numeric" autocomplete="cc-csc" minlength="3" maxlength="4" required>
+
+        <label for="billingZip">Billing ZIP</label>
+        <input id="billingZip" name="billingZip" type="text" inputmode="numeric" autocomplete="postal-code" minlength="5" maxlength="10" required>
+
+        <fieldset class="extras">
+          <legend>Optional add-ons</legend>
+          <label><input type="checkbox" name="addons" value="gps"> GPS Navigation (+$9/day)</label>
+          <label><input type="checkbox" name="addons" value="seat"> Child Seat (+$7/day)</label>
+          <label><input type="checkbox" name="addons" value="cover"> Premium Protection (+$16/day)</label>
+          <label><input type="checkbox" name="terms" value="agree" required> I agree to RideNest rental terms and payment authorization.</label>
+        </fieldset>
+
+        <button class="button primary" type="submit">Pay Online</button>
+      </form>
+      <p id="checkoutMessage" class="booking-message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-wrap">
+      <div>
+        <h2>RideNest Car Rental</h2>
+        <p>support@ridenest.com | +1 (702) 555-0142</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> RideNest. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Aurora Executive luxury car</title>
+  <desc id="desc">A dark luxury sedan shown from the side.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eef3f8"/>
+      <stop offset="100%" stop-color="#fdf7ef"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0%" stop-color="#283846"/>
+      <stop offset="100%" stop-color="#121b24"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#bg)"/>
+  <rect x="40" y="248" width="560" height="14" rx="7" fill="#bec9d3" opacity=".55"/>
+  <g transform="translate(70 96)">
+    <circle cx="126" cy="164" r="40" fill="#11181f"/>
+    <circle cx="126" cy="164" r="18" fill="#dde5ea"/>
+    <circle cx="392" cy="164" r="40" fill="#11181f"/>
+    <circle cx="392" cy="164" r="18" fill="#dde5ea"/>
+    <path d="M52 146h420c12 0 22-10 22-22v-16c0-16-10-30-26-36l-73-27c-12-4-24-6-36-6H202c-17 0-33 6-45 17l-64 57H52c-17 0-30 13-30 30v3h30z" fill="url(#body)"/>
+    <path d="M182 54h173c11 0 21 2 31 6l48 17-18 38H135l47-44c0-11 0-17 0-17z" fill="#f5f9fb" opacity=".95"/>
+    <path d="M161 63h78v43H118l43-43z" fill="#99b9d2"/>
+    <path d="M249 63h96c11 0 21 2 30 6l34 12-13 25H249V63z" fill="#99b9d2"/>
+    <rect x="448" y="104" width="22" height="11" rx="5" fill="#fff3b2"/>
+    <rect x="47" y="106" width="12" height="10" rx="5" fill="#fff3b2"/>
+  </g>
+</svg>
