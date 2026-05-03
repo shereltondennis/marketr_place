@@ -3,183 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sherl-Ride Car Rental offers fast online booking, flexible plans, and premium vehicles for city and road trips.">
-  <meta name="author" content="Sherelton Blessing Dennis">
-  <title>Sherl-Ride Car Rental | Drive Anywhere</title>
+  <meta name="description" content="DateLIB helps singles build authentic profiles, discover meaningful matches, and mingle safely.">
+  <meta name="author" content="DateLIB Team">
+  <title>DateLIB | Find Real Connections</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/datelib.css">
 </head>
 <body>
   <header class="site-header" id="top">
-    <p class="announcement">Open daily 6:00 AM to 11:00 PM | Instant pickup in Monrovia, Buchanan, and Gbarnga | Service available across Liberia</p>
-    <div class="nav-wrap">
-      <a class="brand" href="#top" aria-label="Sherl-Ride home">
-        <span class="brand-mark" aria-hidden="true">SR</span>
-        <span class="brand-name">Sherl-Ride</span>
+    <div class="top-bar">DateLIB is for adults 18+ looking for respectful, genuine dating connections.</div>
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="DateLIB home">
+        <span class="brand-mark" aria-hidden="true">DL</span>
+        <span class="brand-name">DateLIB</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
-      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
         <ul>
-          <li><a href="index.html#top">Home</a></li>
-          <li><a href="cars.html">Cars</a></li>
-          <li><a href="index.html#rates">Rates</a></li>
-          <li><a href="index.html#locations">Locations</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a class="button mini" href="cars.html">Book Now</a></li>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#create">Create Profile</a></li>
+          <li><a href="#safety">Safety</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="chat.html">Match Chat</a></li>
+          <li><a class="button small" href="#create">Start Mingling</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Car rental service</p>
-        <h1>Rent the right car in under two minutes.</h1>
-        <p>From compact city cars to luxury SUVs, Sherl-Ride gives you transparent pricing, flexible return times, and support that is always on call.</p>
+        <p class="eyebrow">Professional Dating Platform</p>
+        <h1 id="hero-title">Meet someone worth your time.</h1>
+        <p>DateLIB helps you create an honest profile, browse people who match your intentions, and start conversations with confidence.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#booking">Start Booking</a>
-          <a class="button ghost" href="cars.html">Explore Fleet</a>
+          <a class="button" href="#create">Create Your Profile</a>
+          <a class="text-link" href="#discover">Browse Matches</a>
         </div>
-        <ul class="hero-stats" aria-label="Service highlights">
-          <li><strong>350+</strong> Active vehicles</li>
-          <li><strong>24/7</strong> Roadside support</li>
-          <li><strong>4.9/5</strong> Client rating</li>
+        <div class="quick-actions">
+          <a class="chip-link" href="auth.html">Create Account</a>
+          <a class="chip-link" href="auth.html#login">Login</a>
+          <a class="chip-link" href="chat.html">Open Match Chat</a>
+        </div>
+        <ul class="stats" aria-label="DateLIB highlights">
+          <li><strong>25K+</strong> active members</li>
+          <li><strong>92%</strong> complete profiles</li>
+          <li><strong>24/7</strong> trust monitoring</li>
         </ul>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <img class="hero-main-image" src="images/pexels-sl-wong-338694-947031.jpg" alt="">
-        <div class="visual-orb"></div>
-        <div class="hero-floaters">
-          <img class="hero-car car-one" src="images/pexels-pixabay-164634.jpg" alt="">
-          <img class="hero-car car-two" src="images/pexels-a2pro-8561771.jpg" alt="">
-          <img class="hero-car car-three" src="images/why-kei-8e2gal_GIE8-unsplash.jpg" alt="">
-        </div>
-        <article class="price-card">
-          <p class="label">Starting at</p>
-          <p class="value">$39/day</p>
-          <p class="muted">Unlimited mileage on most plans</p>
-        </article>
-        <article class="route-card">
-          <p class="label">Next available pickup</p>
-          <p class="route">Roberts International Airport</p>
-          <p class="muted">Today, 25 minutes</p>
-        </article>
+      <div class="hero-card" aria-hidden="true">
+        <p class="kicker">Today on DateLIB</p>
+        <h2>New meaningful matches in your city.</h2>
+        <p>Set your intent, share your personality, and discover people who are also ready to mingle.</p>
       </div>
     </section>
 
-    <section class="booking" id="booking" aria-labelledby="booking-title">
-      <div>
-        <p class="eyebrow">Quick reservation</p>
-        <h2 id="booking-title">Check prices and availability</h2>
-        <p>Pick your dates and vehicle class for a quick estimate. For car images and direct booking, open the Cars page.</p>
-      </div>
-      <form id="rentalForm" class="booking-form" method="post" action="#">
-        <label for="pickupCity">Pickup city</label>
-        <select id="pickupCity" name="pickupCity" required>
-          <option value="">Choose a city</option>
-          <option value="Monrovia">Monrovia</option>
-          <option value="Buchanan">Buchanan</option>
-          <option value="Gbarnga">Gbarnga</option>
-          <option value="Harper">Harper</option>
-        </select>
-
-        <label for="pickupDate">Pickup date</label>
-        <input type="date" id="pickupDate" name="pickupDate" required>
-
-        <label for="returnDate">Return date</label>
-        <input type="date" id="returnDate" name="returnDate" required>
-
-        <label for="vehicleClass">Vehicle class</label>
-        <select id="vehicleClass" name="vehicleClass" required>
-          <option value="">Select class</option>
-          <option value="economy">Economy</option>
-          <option value="suv">SUV</option>
-          <option value="luxury">Luxury</option>
-          <option value="van">Family Van</option>
-        </select>
-
-        <fieldset class="extras">
-          <legend>Add-ons</legend>
-          <label><input type="checkbox" name="addons" value="gps"> GPS Navigation (+$9/day)</label>
-          <label><input type="checkbox" name="addons" value="seat"> Child Seat (+$7/day)</label>
-          <label><input type="checkbox" name="addons" value="cover"> Premium Protection (+$16/day)</label>
-        </fieldset>
-
-        <button class="button primary" type="submit">Get Estimate</button>
-      </form>
-      <p id="bookingMessage" class="booking-message" aria-live="polite"></p>
-    </section>
-
-    <section class="section" id="fleet" aria-labelledby="fleet-title">
+    <section class="section" id="discover" aria-labelledby="discover-title">
       <div class="section-head">
-        <p class="eyebrow">Fleet</p>
-        <h2 id="fleet-title">Browse our full cars catalog</h2>
+        <p class="eyebrow">Discover</p>
+        <h2 id="discover-title">People currently mingling on DateLIB</h2>
       </div>
-      <div class="fleet-grid">
-        <article class="panel">
-          <h3>Now on a dedicated page</h3>
-          <p>See 10 available rental cars with daily prices, features, and direct booking links.</p>
-          <p class="muted">Choose any car and continue to the booking and online payment form.</p>
-          <a class="button primary section-link" href="cars.html">View All Cars</a>
+      <div class="profile-grid" id="profileGrid">
+        <article class="profile-card">
+          <h3>Amara, 29</h3>
+          <p class="meta">Monrovia • Long-term dating</p>
+          <p>Book lover, weekend hiker, and coffee enthusiast. Looking for a kind and curious partner.</p>
+        </article>
+        <article class="profile-card">
+          <h3>Daniel, 33</h3>
+          <p class="meta">Buchanan • Serious relationship</p>
+          <p>Product designer who loves live music and Sunday cooking. Ready for intentional connection.</p>
+        </article>
+        <article class="profile-card">
+          <h3>Sia, 27</h3>
+          <p class="meta">Gbarnga • Open to dating</p>
+          <p>Fitness coach, traveler, and early riser. Wants someone authentic and emotionally available.</p>
         </article>
       </div>
     </section>
 
-    <section class="section split" id="rates" aria-labelledby="rates-title">
-      <article class="panel">
-        <p class="eyebrow">Rates</p>
-        <h2 id="rates-title">Simple pricing. No hidden charges.</h2>
-        <p>Every booking includes liability coverage, 24/7 assistance, and free cancellation up to 24 hours before pickup.</p>
-      </article>
-      <article class="panel checklist">
-        <h3>Included in every rental</h3>
-        <ul>
-          <li>Standard insurance package</li>
-          <li>Real-time trip support</li>
-          <li>Digital contract and invoice</li>
-          <li>Flexible drop-off windows</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="section" id="locations" aria-labelledby="locations-title">
+    <section class="section form-section" id="create" aria-labelledby="create-title">
       <div class="section-head">
-        <p class="eyebrow">Locations</p>
-        <h2 id="locations-title">Pickup points across Liberia</h2>
+        <p class="eyebrow">Create Your Profile</p>
+        <h2 id="create-title">Tell DateLIB who you are</h2>
       </div>
-      <div class="location-grid">
-        <article>
-          <h3>Monrovia</h3>
-          <p>Roberts International Airport, Sinkor Desk, Mamba Point Hub</p>
-        </article>
-        <article>
-          <h3>Buchanan</h3>
-          <p>Port Area Office, City Center Branch, Upper Buchanan Pickup Point</p>
-        </article>
-        <article>
-          <h3>Nationwide Liberia</h3>
-          <p>Flexible pickup and drop-off support available in all 15 counties on request.</p>
-        </article>
+      <div class="form-layout">
+        <form id="profileForm" class="profile-form" novalidate>
+          <div class="field-group">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field-group">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="18" max="99" required>
+          </div>
+
+          <div class="field-group">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" required>
+          </div>
+
+          <div class="field-group">
+            <label for="intent">Dating Intent</label>
+            <select id="intent" name="intent" required>
+              <option value="">Select intent</option>
+              <option value="Long-term dating">Long-term dating</option>
+              <option value="Serious relationship">Serious relationship</option>
+              <option value="Open to dating">Open to dating</option>
+            </select>
+          </div>
+
+          <div class="field-group full-span">
+            <label for="bio">Short Bio</label>
+            <textarea id="bio" name="bio" rows="4" maxlength="220" placeholder="Share your interests and what kind of person you want to meet." required></textarea>
+          </div>
+
+          <div class="field-group full-span">
+            <label for="interests">Interests (comma separated)</label>
+            <input id="interests" name="interests" type="text" placeholder="music, books, travel">
+          </div>
+
+          <button class="button" type="submit">Publish Profile</button>
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
+        </form>
+
+        <aside class="trust-panel" id="safety" aria-labelledby="safety-title">
+          <p class="eyebrow">Safety First</p>
+          <h3 id="safety-title">Date with confidence</h3>
+          <ul>
+            <li>Profile moderation and reporting tools</li>
+            <li>Respect policy for every member</li>
+            <li>Private messaging with block controls</li>
+            <li>Guidance for secure first meetings</li>
+          </ul>
+          <a class="button small panel-action" href="chat.html">Go To Match Chat</a>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
-    <div class="footer-wrap">
-      <div>
-        <h2>Sherl-Ride Car Rental</h2>
-        <p>support@sherl-ride.com | +231776109240</p>
-      </div>
-      <div>
-        <p>&copy; <span id="currentyear"></span> Sherl-Ride. All rights reserved.</p>
-        <p id="lastModified" class="small"></p>
-      </div>
-    </div>
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> DateLIB. Real people. Real intentions.</p>
   </footer>
 
-  <script src="scripts/site.js" defer></script>
+  <script src="scripts/datelib.js" defer></script>
 </body>
 </html>

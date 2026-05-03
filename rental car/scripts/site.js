@@ -5,6 +5,25 @@ const ratesByClass = {
   van: 72,
 };
 
+const vehicleClassMeta = {
+  economy: {
+    label: `Economy`,
+    model: `City Sprint Eco`,
+  },
+  suv: {
+    label: `SUV`,
+    model: `TrailRunner X`,
+  },
+  luxury: {
+    label: `Luxury`,
+    model: `Aurora Executive`,
+  },
+  van: {
+    label: `Family Van`,
+    model: `Orbit 8 Family Van`,
+  },
+};
+
 const addonRates = {
   gps: 9,
   seat: 7,
@@ -58,6 +77,34 @@ const normalizeToMidnight = (dateValue) => {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 };
 
+const setMessageState = (element, text, tone = `info`) => {
+  if (!element) {
+    return;
+  }
+
+  element.textContent = text;
+  element.classList.remove(`is-error`, `is-success`, `is-info`);
+  element.classList.add(`is-${tone}`);
+};
+
+const readPendingBooking = () => {
+  if (!window.sessionStorage) {
+    return null;
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(`pendingBooking`);
+    if (!raw) {
+      return null;
+    }
+
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === `object` ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
 const bindBookingForm = () => {
   const form = document.querySelector(`#rentalForm`);
   const message = document.querySelector(`#bookingMessage`);
@@ -85,13 +132,17 @@ const bindBookingForm = () => {
     event.preventDefault();
 
     const formData = new FormData(form);
+    const fullName = `${formData.get(`fullName`) || ``}`.trim();
+    const email = `${formData.get(`email`) || ``}`.trim();
+    const phone = `${formData.get(`phone`) || ``}`.trim();
     const pickupCity = `${formData.get(`pickupCity`) || ``}`.trim();
     const pickupDate = `${formData.get(`pickupDate`) || ``}`.trim();
     const returnDate = `${formData.get(`returnDate`) || ``}`.trim();
     const vehicleClass = `${formData.get(`vehicleClass`) || ``}`.trim();
+    const paymentMethod = `${formData.get(`paymentMethod`) || ``}`.trim();
 
-    if (!pickupCity || !pickupDate || !returnDate || !vehicleClass) {
-      message.textContent = `Please complete all required fields to get an estimate.`;
+    if (!fullName || !email || !phone || !pickupCity || !pickupDate || !returnDate || !vehicleClass || !paymentMethod) {
+      setMessageState(message, `Please complete all required fields before continuing.`, `error`);
       return;
     }
 
@@ -99,34 +150,109 @@ const bindBookingForm = () => {
     const end = normalizeToMidnight(returnDate);
 
     if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
-      message.textContent = `Please enter valid dates.`;
+      setMessageState(message, `Please enter valid pickup and return dates.`, `error`);
       return;
     }
 
     const days = Math.ceil((end - start) / 86400000);
     if (days < 1) {
-      message.textContent = `Return date must be at least one day after pickup date.`;
+      setMessageState(message, `Return date must be at least one day after pickup date.`, `error`);
       return;
     }
 
     const dailyRate = ratesByClass[vehicleClass];
+    const classMeta = vehicleClassMeta[vehicleClass];
+    if (!dailyRate || !classMeta) {
+      setMessageState(message, `Please select a valid vehicle class.`, `error`);
+      return;
+    }
+
     const selectedAddons = formData.getAll(`addons`).map((value) => `${value}`);
     const addonPerDay = selectedAddons.reduce((sum, addon) => sum + (addonRates[addon] || 0), 0);
 
     const baseCost = days * dailyRate;
     const addonCost = days * addonPerDay;
     const estimatedTotal = baseCost + addonCost;
+    const paymentMethodLabel = paymentMethod.replace(`-`, ` `).replace(/\b\w/g, (char) => char.toUpperCase());
 
-    message.textContent = `Estimated total for ${days} day${days === 1 ? `` : `s`} in ${pickupCity}: ${currencyFormatter.format(estimatedTotal)}.`;
+    const summary = `Booking summary:
+Client: ${fullName}
+Car class: ${classMeta.label}
+Pickup city: ${pickupCity}
+Duration: ${days} day${days === 1 ? `` : `s`}
+Estimated total: ${currencyFormatter.format(estimatedTotal)}
+
+Are you ready to continue to payment now?`;
+
+    const readyToPay = window.confirm(summary);
+    const bookingPayload = {
+      fullName,
+      email,
+      phone,
+      pickupCity,
+      pickupDate,
+      returnDate,
+      vehicleClass,
+      paymentMethod: paymentMethodLabel,
+      carModel: classMeta.model,
+      dailyRate,
+      selectedAddons,
+      days,
+      estimatedTotal,
+      submittedAt: new Date().toISOString(),
+    };
+
+    if (window.sessionStorage) {
+      window.sessionStorage.setItem(`pendingBooking`, JSON.stringify(bookingPayload));
+    }
+
+    if (!readyToPay) {
+      setMessageState(
+        message,
+        `Estimate ready: ${currencyFormatter.format(estimatedTotal)} for ${days} day${days === 1 ? `` : `s`}. Booking saved, submit again when ready to pay.`,
+        `info`,
+      );
+      return;
+    }
+
+    const params = new URLSearchParams({
+      car: classMeta.model,
+      rate: `${dailyRate}`,
+      city: pickupCity,
+      pickup: pickupDate,
+      return: returnDate,
+      name: fullName,
+      email,
+      phone,
+    });
+
+    setMessageState(message, `Booking submitted. Opening secure payment now...`, `success`);
+    window.setTimeout(() => {
+      window.location.href = `booking.html?${params.toString()}`;
+    }, 350);
   });
 };
 
 const applyCheckoutCarDetails = (form) => {
   const params = new URLSearchParams(window.location.search);
-  const carModel = params.get(`car`) ? params.get(`car`).trim() : ``;
-  const rateValue = Number(params.get(`rate`));
+  const pendingBooking = readPendingBooking();
+  const carModel = params.get(`car`) ? params.get(`car`).trim() : `${pendingBooking?.carModel || ``}`.trim();
+  const rateValue = Number(params.get(`rate`) || pendingBooking?.dailyRate);
+  const fullName = params.get(`name`) ? params.get(`name`).trim() : `${pendingBooking?.fullName || ``}`.trim();
+  const email = params.get(`email`) ? params.get(`email`).trim() : `${pendingBooking?.email || ``}`.trim();
+  const phone = params.get(`phone`) ? params.get(`phone`).trim() : `${pendingBooking?.phone || ``}`.trim();
+  const pickupCity = params.get(`city`) ? params.get(`city`).trim() : `${pendingBooking?.pickupCity || ``}`.trim();
+  const pickupDate = params.get(`pickup`) ? params.get(`pickup`).trim() : `${pendingBooking?.pickupDate || ``}`.trim();
+  const returnDate = params.get(`return`) ? params.get(`return`).trim() : `${pendingBooking?.returnDate || ``}`.trim();
+
   const modelInput = form.querySelector(`#carModel`);
   const rateInput = form.querySelector(`#dailyRate`);
+  const fullNameInput = form.querySelector(`#fullName`);
+  const emailInput = form.querySelector(`#email`);
+  const phoneInput = form.querySelector(`#phone`);
+  const pickupCityInput = form.querySelector(`#pickupCityCheckout`);
+  const pickupDateInput = form.querySelector(`#pickupDateCheckout`);
+  const returnDateInput = form.querySelector(`#returnDateCheckout`);
   const selectedCarName = document.querySelector(`#selectedCarName`);
   const selectedCarRate = document.querySelector(`#selectedCarRate`);
 
@@ -148,6 +274,33 @@ const applyCheckoutCarDetails = (form) => {
   if (selectedCarRate) {
     selectedCarRate.textContent = `${currencyFormatter.format(safeRate)}/day`;
   }
+
+  if (fullNameInput && fullName) {
+    fullNameInput.value = fullName;
+  }
+
+  if (emailInput && email) {
+    emailInput.value = email;
+  }
+
+  if (phoneInput && phone) {
+    phoneInput.value = phone;
+  }
+
+  if (pickupCityInput && pickupCity) {
+    const hasCity = [...pickupCityInput.options].some((option) => option.value === pickupCity);
+    if (hasCity) {
+      pickupCityInput.value = pickupCity;
+    }
+  }
+
+  if (pickupDateInput && pickupDate) {
+    pickupDateInput.value = pickupDate;
+  }
+
+  if (returnDateInput && returnDate) {
+    returnDateInput.value = returnDate;
+  }
 };
 
 const bindCheckoutForm = () => {
@@ -160,13 +313,17 @@ const bindCheckoutForm = () => {
     return;
   }
 
-  applyCheckoutCarDetails(form);
-
   const today = new Date();
   const todayIso = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString().split(`T`)[0];
 
   pickupInput.min = todayIso;
   returnInput.min = todayIso;
+
+  applyCheckoutCarDetails(form);
+  returnInput.min = pickupInput.value || todayIso;
+  if (returnInput.value && returnInput.value < returnInput.min) {
+    returnInput.value = ``;
+  }
 
   pickupInput.addEventListener(`change`, () => {
     returnInput.min = pickupInput.value || todayIso;
@@ -187,12 +344,12 @@ const bindCheckoutForm = () => {
     const termsAccepted = formData.get(`terms`) === `agree`;
 
     if (!carModel || !dailyRate || !pickupCity || !pickupDate || !returnDate) {
-      message.textContent = `Please complete all required fields before payment.`;
+      setMessageState(message, `Please complete all required fields before payment.`, `error`);
       return;
     }
 
     if (!termsAccepted) {
-      message.textContent = `Please agree to the rental terms to continue.`;
+      setMessageState(message, `Please agree to the rental terms to continue.`, `error`);
       return;
     }
 
@@ -200,13 +357,13 @@ const bindCheckoutForm = () => {
     const end = normalizeToMidnight(returnDate);
 
     if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
-      message.textContent = `Please enter valid pickup and return dates.`;
+      setMessageState(message, `Please enter valid pickup and return dates.`, `error`);
       return;
     }
 
     const days = Math.ceil((end - start) / 86400000);
     if (days < 1) {
-      message.textContent = `Return date must be at least one day after pickup date.`;
+      setMessageState(message, `Return date must be at least one day after pickup date.`, `error`);
       return;
     }
 
@@ -216,7 +373,11 @@ const bindCheckoutForm = () => {
     const tax = subtotal * 0.085;
     const grandTotal = subtotal + tax;
 
-    message.textContent = `Payment approved for ${carModel} in ${pickupCity}. ${days} day${days === 1 ? `` : `s`} booked. Total charged: ${currencyFormatter.format(grandTotal)}.`;
+    setMessageState(
+      message,
+      `Payment approved for ${carModel} in ${pickupCity}. ${days} day${days === 1 ? `` : `s`} booked. Total charged: ${currencyFormatter.format(grandTotal)}.`,
+      `success`,
+    );
 
     const existingModel = carModel;
     const existingRate = `${dailyRate}`;
@@ -224,6 +385,10 @@ const bindCheckoutForm = () => {
     form.querySelector(`#carModel`).value = existingModel;
     form.querySelector(`#dailyRate`).value = existingRate;
     returnInput.min = pickupInput.min;
+
+    if (window.sessionStorage) {
+      window.sessionStorage.removeItem(`pendingBooking`);
+    }
   });
 };
 

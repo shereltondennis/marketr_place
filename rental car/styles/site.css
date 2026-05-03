@@ -412,6 +412,22 @@ h1 {
   gap: 0.75rem;
 }
 
+.field-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-block-title {
+  margin: 0.35rem 0 0.1rem;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  color: #123646;
+}
+
+.booking-form .full-span {
+  grid-column: 1 / -1;
+}
+
 label,
 legend {
   font-weight: 700;
@@ -452,6 +468,18 @@ select {
   margin: 0;
   min-height: 1.5rem;
   font-weight: 700;
+  color: #0f4d5f;
+}
+
+.booking-message.is-error {
+  color: #9a2a2a;
+}
+
+.booking-message.is-success {
+  color: #126446;
+}
+
+.booking-message.is-info {
   color: #0f4d5f;
 }
 
@@ -678,7 +706,8 @@ footer p {
   }
 
   .extras,
-  .booking-form button {
+  .booking-form button,
+  .booking-form .full-span {
     grid-column: 1 / -1;
   }
 
