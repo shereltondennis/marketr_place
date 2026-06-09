@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to your buyer account.">
+  <meta name="author" content="Buy Liberia">
+  <title>Buyer Login | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Login to access your buyer account and saved properties.</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="login-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Welcome back</p>
+        <h1 id="login-title">Buyer Login</h1>
+        <p>Access your account to view saved properties and manage your preferences.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <div id="loginForm">
+          <form id="buyerLoginForm" class="contact-form">
+            <div class="field-group">
+              <label for="loginUsername">Username *</label>
+              <input id="loginUsername" type="text" required placeholder="BUY123456">
+            </div>
+
+            <div class="field-group">
+              <label for="loginPassword">Password *</label>
+              <input id="loginPassword" type="password" required placeholder="••••••••">
+            </div>
+
+            <div id="loginError" style="display: none; color: #d32f2f; padding: 1rem; background: #ffebee; border-radius: 8px; margin-bottom: 1rem;">
+              Invalid username or password. Please try again.
+            </div>
+
+            <button type="submit" class="button primary" style="width: 100%;">Login</button>
+            <p style="margin-top: 1rem; text-align: center;">
+              Don't have an account? <a href="buyer-signup.html">Create one now</a>
+            </p>
+          </form>
+        </div>
+
+        <div id="dashboardDisplay" style="display: none;">
+          <div class="panel" style="background: #effbf7; border-radius: 16px;">
+            <h2 style="color: #116751; margin-top: 0;">Welcome Back! 👋</h2>
+            <p id="userGreeting" style="color: #333;"></p>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+              <h3>Your Account Information</h3>
+              <div style="display: grid; gap: 1rem;">
+                <div>
+                  <label style="display: block; font-weight: 600; color: #666; margin-bottom: 0.25rem;">Name</label>
+                  <p id="displayName" style="margin: 0;"></p>
+                </div>
+                <div>
+                  <label style="display: block; font-weight: 600; color: #666; margin-bottom: 0.25rem;">Email</label>
+                  <p id="displayEmail" style="margin: 0;"></p>
+                </div>
+                <div>
+                  <label style="display: block; font-weight: 600; color: #666; margin-bottom: 0.25rem;">Phone</label>
+                  <p id="displayPhone" style="margin: 0;"></p>
+                </div>
+                <div>
+                  <label style="display: block; font-weight: 600; color: #666; margin-bottom: 0.25rem;">Location</label>
+                  <p id="displayCity" style="margin: 0;"></p>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <a href="properties.html" class="button primary" style="text-align: center;">Browse Properties</a>
+              <a href="buyers.html" class="button ghost" style="text-align: center;">Mortgage Calculator</a>
+              <button onclick="logout()" class="button ghost" style="width: 100%;">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Buy Liberia. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+  <script>
+    // Check if user is already logged in
+    window.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser && currentUser.type === 'buyer') {
+        displayDashboard(currentUser);
+      }
+    });
+
+    document.getElementById('buyerLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      const accounts = JSON.parse(localStorage.getItem('realtorAccounts')) || [];
+      const account = accounts.find(acc => acc.type === 'buyer' && acc.username === username && acc.password === password);
+
+      if (account) {
+        localStorage.setItem('currentUser', JSON.stringify(account));
+        displayDashboard(account);
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    });
+
+    function displayDashboard(account) {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('dashboardDisplay').style.display = 'block';
+      
+      document.getElementById('userGreeting').textContent = `Welcome back, ${account.firstName}! You are logged in as a buyer.`;
+      document.getElementById('displayName').textContent = `${account.firstName} ${account.lastName}`;
+      document.getElementById('displayEmail').textContent = account.email;
+      document.getElementById('displayPhone').textContent = account.phone;
+      document.getElementById('displayCity').textContent = account.city;
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      location.reload();
+    }
+  </script>
+</body>
+</html>

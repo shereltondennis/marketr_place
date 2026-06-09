@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View the full property detail page for this home with gallery, price, details, and tour request.">
+  <meta name="author" content="Buy Liberia">
+  <title>Property Detail | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Every listing includes the latest MLS data, agent contact, and local school ratings.</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="property-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Property highlight</p>
+        <h1 id="property-title">Spacious family home near schools and parks</h1>
+        <p>4 bedrooms, 3 bathrooms, and a modern kitchen with a large backyard. Detailed neighborhood insights and agent contact are below.</p>
+      </div>
+      <div class="detail-summary">
+        <p class="status-badge">For Sale</p>
+        <p class="listing-meta"><strong>$725,000</strong> · 4 bd · 3 ba · 2,350 sq ft</p>
+      </div>
+    </section>
+
+    <section class="section detail-grid" aria-labelledby="details-title">
+      <div>
+        <h2 id="details-title">Listing details</h2>
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Front exterior of home">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80" alt="Interior living room with open layout">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt="Modern kitchen with island">
+        </div>
+        <div class="checklist panel">
+          <h3>Property highlights</h3>
+          <ul>
+            <li>Large family room with gas fireplace</li>
+            <li>Gourmet kitchen, quartz counters, and pantry</li>
+            <li>Primary suite with walk-in closet and spa bath</li>
+            <li>Private backyard, covered patio, and smart landscaping</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>School & transit</h3>
+          <ul>
+            <li>Top-rated elementary school within 0.5 miles</li>
+            <li>Easy access to commuter transit and major corridors</li>
+            <li>Nearby parks, trails, and neighborhood shopping</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="panel sticky-panel" aria-labelledby="schedule-title">
+        <h2 id="schedule-title">Schedule a tour</h2>
+        <p>Book a private showing with our listing specialist, Sherelton Blessing Dennis.</p>
+        <div class="feature-card">
+          <p class="eyebrow">Listing agent</p>
+          <h3>Sherelton Blessing Dennis</h3>
+          <p>Buyer and seller advisor with 10+ years of neighborhood expertise.</p>
+          <p><strong>Phone:</strong> +231776109240</p>
+          <p><strong>Email:</strong> shereltondennis@gmail.com</p>
+        </div>
+        <div class="info-chip">
+          <p><strong>Walk score:</strong> 78</p>
+          <p><strong>Year built:</strong> 2017</p>
+          <p><strong>Lot size:</strong> 0.29 acres</p>
+        </div>
+        <a class="button primary" href="contact.html">Request a tour</a>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="map-title">
+      <div class="panel">
+        <h2 id="map-title">Neighborhood snapshot</h2>
+        <p>Discover the local community, nearby amenities, and what makes this area a strong choice for families.</p>
+        <div class="map-preview">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Map preview and neighborhood area">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Summit Lane Realty. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>
+

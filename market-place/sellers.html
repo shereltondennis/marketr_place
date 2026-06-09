@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover our seller marketing strategy and request a complementary home valuation estimate.">
+  <meta name="author" content="Buy Liberia">
+  <title>Sellers | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Sell with the market expertise that secures higher offers and faster closings.</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="sellers-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Selling services</p>
+        <h1 id="sellers-title">Maximize your home’s value with a proven marketing plan.</h1>
+        <p>Our seller strategy combines staging, professional photography, and strong online exposure to drive qualified buyer interest.</p>
+      </div>
+      <div class="panel">
+        <h2>Request a complimentary CMA</h2>
+        <form id="valuationForm" class="valuation-form">
+          <div class="field-group">
+            <label for="homeAddress">Property address</label>
+            <input id="homeAddress" type="text" placeholder="123 Main St" required>
+          </div>
+          <div class="field-group">
+            <label for="homeCity">City</label>
+            <input id="homeCity" type="text" placeholder="Austin" required>
+          </div>
+          <div class="field-group">
+            <label for="homeZip">ZIP code</label>
+            <input id="homeZip" type="text" placeholder="78701" required>
+          </div>
+          <button class="button primary" type="button" id="requestValuation">Get Estimate</button>
+          <p id="valuationMessage" class="booking-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="marketing-title">
+      <div class="section-head">
+        <p class="eyebrow">Seller marketing</p>
+        <h2 id="marketing-title">How we prepare your home for market</h2>
+      </div>
+      <div class="split">
+        <article class="panel">
+          <h3>Staging & photography</h3>
+          <p>We stage primary living spaces and capture the home with professional photos, video, and 3D walk-throughs.</p>
+        </article>
+        <article class="panel">
+          <h3>MLS syndication</h3>
+          <p>Your listing appears on MLS plus major consumer portals, local real estate sites, and our brokerage network.</p>
+        </article>
+        <article class="panel">
+          <h3>Showings & open houses</h3>
+          <p>We manage appointments, safety protocols, and buyer follow-up so every inquiry is converted quickly.</p>
+        </article>
+        <article class="panel">
+          <h3>Offer management</h3>
+          <p>We evaluate each offer, negotiate contract terms, and keep your sale on track through closing.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Summit Lane Realty. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>
+

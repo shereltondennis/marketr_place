@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search all Liberia property listings with filters for price, beds, baths and neighborhood.">
+  <meta name="author" content="Buy Liberia">
+  <title>Properties | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Market-reviewed homes updated frequently | Trusted brokerage serving Monrovia and beyond</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="search-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Property Search</p>
+        <h1 id="search-title">Find homes near your next chapter.</h1>
+        <p>Browse active Liberian property listings with the filters buyers use most: price, bedrooms, bathrooms, and property type.</p>
+      </div>
+      <div class="hero-search" aria-label="Property search filters">
+        <form class="search-form">
+          <div class="field-group">
+            <label for="searchLocation">City, neighborhood, or district</label>
+            <input id="searchLocation" name="searchLocation" type="search" placeholder="Monrovia, Sinkor, Paynesville">
+          </div>
+          <div class="field-group">
+            <label for="priceRange">Price range</label>
+            <select id="priceRange" name="priceRange">
+              <option value="">Any price</option>
+              <option value="0-500000">Up to $500k</option>
+              <option value="500000-900000">$500k–$900k</option>
+              <option value="900000-1500000">$900k–$1.5M</option>
+              <option value="1500000+">$1.5M+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="beds">Bedrooms</label>
+            <select id="beds" name="beds">
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="baths">Bathrooms</label>
+            <select id="baths" name="baths">
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="propertyType">Property type</label>
+            <select id="propertyType" name="propertyType">
+              <option value="">All types</option>
+              <option value="single-family">Single-family</option>
+              <option value="condo">Condo</option>
+              <option value="townhome">Townhome</option>
+              <option value="land">Land</option>
+            </select>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="mapToggle"> Show map view</label>
+          </div>
+          <button class="button primary" type="submit">View Listings</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="listings-title">
+      <div class="section-head">
+        <p class="eyebrow">All listings</p>
+        <h2 id="listings-title">Active homes on the market</h2>
+      </div>
+      <div class="listing-grid">
+        <article class="listing-card">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Exterior of modern 4 bedroom home">
+          <div class="listing-copy">
+            <p class="status-badge">New</p>
+            <h3><a href="property.html">4-bed Modern Home in Sinkor</a></h3>
+            <p class="listing-meta">$225,000 · 4 bd · 3 ba · 2,350 sq ft</p>
+            <p>Close to Congo Town amenities with easy access to the seafront and city services.</p>
+            <a class="button primary" href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+        <article class="listing-card">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Luxury condo living room interior">
+          <div class="listing-copy">
+            <p class="status-badge">Featured</p>
+            <h3><a href="property.html">Mamba Point Apartment with Atlantic Views</a></h3>
+            <p class="listing-meta">$310,000 · 2 bd · 2 ba · 1,320 sq ft</p>
+            <p>High-rise apartment with ocean views and easy access to business and diplomatic districts.</p>
+            <a class="button primary" href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+        <article class="listing-card">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" alt="Cozy suburban home exterior">
+          <div class="listing-copy">
+            <p class="status-badge">Open House</p>
+            <h3><a href="property.html">Traditional Compound near Paynesville</a></h3>
+            <p class="listing-meta">$385,000 · 5 bd · 4 ba · 3,100 sq ft</p>
+            <p>Quiet gated compound with easy access to shopping, schools, and the Paynesville waterfront.</p>
+            <a class="button primary" href="contact.html">Contact Agent</a>
+          </div>
+        </article>
+      </div>
+      <p class="section-note">Listings reflect local market inventory and are refreshed regularly. For a live search experience, contact our team.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Buy Liberia. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>
+

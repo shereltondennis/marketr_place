@@ -1,0 +1,30 @@
+/* Brand overrides: show BUY LIBERIA across header and footer on all pages */
+.site-header::after {
+  content: "BUY LIBERIA";
+  display: block;
+  text-align: center;
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+footer::before {
+  content: "BUY LIBERIA";
+  display: block;
+  text-align: center;
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+/* Small screens: reduce size */
+@media (max-width: 540px) {
+  .site-header::after { font-size: 0.85rem; }
+  footer::before { font-size: 0.95rem; }
+}

@@ -72,6 +72,94 @@ const bindMobileNav = () => {
   });
 };
 
+const formatCurrency = (value) => {
+  return currencyFormatter.format(value);
+};
+
+const bindMortgageCalculator = () => {
+  const purchasePrice = document.querySelector(`#purchasePrice`);
+  const downPayment = document.querySelector(`#downPayment`);
+  const interestRate = document.querySelector(`#interestRate`);
+  const loanTerm = document.querySelector(`#loanTerm`);
+  const button = document.querySelector(`#calculateMortgage`);
+  const result = document.querySelector(`#mortgageResult`);
+
+  if (!purchasePrice || !downPayment || !interestRate || !loanTerm || !button || !result) {
+    return;
+  }
+
+  button.addEventListener(`click`, () => {
+    const priceValue = Number(purchasePrice.value || 0);
+    const downValue = Number(downPayment.value || 0);
+    const rateValue = Number(interestRate.value || 0) / 100;
+    const termValue = Number(loanTerm.value || 0);
+
+    if (priceValue <= 0 || rateValue <= 0 || termValue <= 0 || downValue < 0) {
+      setMessageState(result, `Enter purchase price, down payment, interest rate, and loan term to calculate.`, `error`);
+      return;
+    }
+
+    const loanAmount = Math.max(priceValue - downValue, 0);
+    const monthlyRate = rateValue / 12;
+    const payments = termValue * 12;
+    const monthlyPayment = monthlyRate === 0
+      ? loanAmount / payments
+      : loanAmount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -payments)));
+
+    setMessageState(result, `Estimated monthly payment: ${formatCurrency(monthlyPayment)}.`, `success`);
+  });
+};
+
+const bindValuationForm = () => {
+  const address = document.querySelector(`#homeAddress`);
+  const city = document.querySelector(`#homeCity`);
+  const zip = document.querySelector(`#homeZip`);
+  const button = document.querySelector(`#requestValuation`);
+  const message = document.querySelector(`#valuationMessage`);
+
+  if (!address || !city || !zip || !button || !message) {
+    return;
+  }
+
+  button.addEventListener(`click`, () => {
+    const addressValue = `${address.value || ``}`.trim();
+    const cityValue = `${city.value || ``}`.trim();
+    const zipValue = `${zip.value || ``}`.trim();
+
+    if (!addressValue || !cityValue || !zipValue) {
+      setMessageState(message, `Please enter your address, city, and ZIP code.`, `error`);
+      return;
+    }
+
+    setMessageState(message, `Thanks! We’ll review your property details and follow up with a complimentary estimate within one business day.`, `success`);
+  });
+};
+
+const bindContactForm = () => {
+  const form = document.querySelector(`#contactForm`);
+  const response = document.querySelector(`#contactResponse`);
+
+  if (!form || !response) {
+    return;
+  }
+
+  form.addEventListener(`submit`, (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const name = `${formData.get(`contactName`) || ``}`.trim();
+    const email = `${formData.get(`contactEmail`) || ``}`.trim();
+    const message = `${formData.get(`contactMessage`) || ``}`.trim();
+
+    if (!name || !email || !message) {
+      setMessageState(response, `Please complete the name, email, and message fields before sending.`, `error`);
+      return;
+    }
+
+    form.reset();
+    setMessageState(response, `Message sent! Our team will respond within one business day.`, `success`);
+  });
+};
+
 const normalizeToMidnight = (dateValue) => {
   const date = new Date(dateValue);
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -395,6 +483,9 @@ const bindCheckoutForm = () => {
 const init = () => {
   setFooterDates();
   bindMobileNav();
+  bindMortgageCalculator();
+  bindValuationForm();
+  bindContactForm();
   bindBookingForm();
   bindCheckoutForm();
 };

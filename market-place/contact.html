@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Buy Liberia to schedule a tour, request a valuation, or ask about a property in Liberia.">
+  <meta name="author" content="Buy Liberia">
+  <title>Contact | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Reach out today for buyer tours, seller valuations, or property questions.</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="contact-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Contact us</p>
+        <h1 id="contact-title">Let’s talk about your next move.</h1>
+        <p>Send us a message, call the office, or visit our local brokerage in person.</p>
+      </div>
+      <div class="panel">
+        <p><strong>Office:</strong> 30 Waterside Avenue, Monrovia, Liberia</p>
+        <p><strong>Phone:</strong> +231776109240</p>
+        <p><strong>Email:</strong> shereltondennis@gmail.com</p>
+        <p><strong>Hours:</strong> Mon–Fri 9:00 AM–6:00 PM</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="form-title">
+      <div class="split">
+        <article class="panel">
+          <h2 id="form-title">Send a message</h2>
+          <form id="contactForm" class="booking-form">
+            <div class="field-group">
+              <label for="contactName">Name</label>
+              <input id="contactName" name="contactName" type="text" required>
+            </div>
+            <div class="field-group">
+              <label for="contactEmail">Email</label>
+              <input id="contactEmail" name="contactEmail" type="email" required>
+            </div>
+            <div class="field-group">
+              <label for="contactPhone">Phone</label>
+              <input id="contactPhone" name="contactPhone" type="tel">
+            </div>
+            <div class="field-group full-span">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="contactMessage" rows="4" required></textarea>
+            </div>
+            <button class="button primary" type="submit">Send Message</button>
+            <p id="contactResponse" class="booking-message" aria-live="polite"></p>
+          </form>
+        </article>
+        <article class="panel">
+          <h2>Visit us</h2>
+          <div class="map-preview">
+            <iframe
+              src="https://www.google.com/maps?q=30+Waterside+Avenue+Monrovia+Liberia&output=embed"
+              width="100%"
+              height="320"
+              style="border:0; border-radius: 18px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Buy Liberia office location on Google Maps">
+            </iframe>
+            <p class="small" style="margin-top: 0.8rem;">Tap or click the map to open directions in Google Maps.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Buy Liberia. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+</body>
+</html>
+

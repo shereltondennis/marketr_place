@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a buyer account to start your home search.">
+  <meta name="author" content="Buy Liberia">
+  <title>Create Buyer Account | Buy Liberia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/brand-overrides.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <p class="announcement">Join as a buyer to access exclusive property listings and tools.</p>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Buy Liberia home">
+        <span class="brand-mark" aria-hidden="true">BL</span>
+        <span class="brand-name">Buy Liberia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="buyer-signup.html">Buyers</a></li>
+          <li><a href="seller-signup.html">Sellers</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="agents.html">Agents</a></li>
+          <li><a href="contact.html" class="button mini">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero page-hero" aria-labelledby="signup-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Start your journey</p>
+        <h1 id="signup-title">Create your buyer account</h1>
+        <p>Join thousands of buyers finding their perfect home in Liberia. Create an account in minutes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Create Account</h2>
+      </div>
+
+      <div id="signupForm" style="max-width: 500px; margin: 0 auto;">
+        <form id="buyerSignup" class="contact-form">
+          <div class="field-group">
+            <label for="buyerFirstName">First Name *</label>
+            <input id="buyerFirstName" type="text" required placeholder="John">
+          </div>
+
+          <div class="field-group">
+            <label for="buyerLastName">Last Name *</label>
+            <input id="buyerLastName" type="text" required placeholder="Doe">
+          </div>
+
+          <div class="field-group">
+            <label for="buyerEmail">Email Address *</label>
+            <input id="buyerEmail" type="email" required placeholder="john@example.com">
+          </div>
+
+          <div class="field-group">
+            <label for="buyerPhone">Phone Number *</label>
+            <input id="buyerPhone" type="tel" required placeholder="+231776109240">
+          </div>
+
+          <div class="field-group">
+            <label for="buyerCity">City/Region *</label>
+            <input id="buyerCity" type="text" required placeholder="Monrovia">
+          </div>
+
+          <div class="field-group">
+            <label for="buyerBudget">Budget Range (Optional)</label>
+            <select id="buyerBudget">
+              <option value="">Select budget range</option>
+              <option value="under50000">Under $50,000</option>
+              <option value="50000-100000">$50,000 - $100,000</option>
+              <option value="100000-200000">$100,000 - $200,000</option>
+              <option value="200000-500000">$200,000 - $500,000</option>
+              <option value="500000plus">$500,000+</option>
+            </select>
+          </div>
+
+          <button type="submit" class="button primary" style="width: 100%;">Create Account</button>
+          <p style="margin-top: 1rem; text-align: center;">
+            Already have an account? <a href="buyer-login.html">Login here</a>
+          </p>
+        </form>
+      </div>
+
+      <div id="credentialsDisplay" style="display: none; max-width: 500px; margin: 2rem auto;">
+        <div class="panel" style="background: #effbf7; border: 2px solid #116751; border-radius: 16px;">
+          <h2 style="color: #116751; margin-top: 0;">Account Created Successfully! 🎉</h2>
+          <p style="color: #333;">Your account has been created. Here are your login credentials:</p>
+          
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #666;">Username:</label>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input id="displayUsername" type="text" readonly style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: monospace;">
+                <button type="button" class="button mini" onclick="copyToClipboard('displayUsername')">Copy</button>
+              </div>
+            </div>
+
+            <div>
+              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #666;">Password:</label>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <input id="displayPassword" type="password" readonly style="flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: monospace;">
+                <button type="button" class="button mini" onclick="togglePasswordVisibility()">Show</button>
+                <button type="button" class="button mini" onclick="copyToClipboard('displayPassword')">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <p style="color: #666; font-size: 0.9rem; margin: 1rem 0;">
+            <strong>Please save these credentials securely.</strong> You'll need them to log in and access your buyer dashboard.
+          </p>
+
+          <div style="display: flex; gap: 1rem;">
+            <a href="buyer-login.html" class="button primary" style="flex: 1; text-align: center;">Go to Login</a>
+            <a href="properties.html" class="button ghost" style="flex: 1; text-align: center;">Browse Properties</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <h2>Buy Liberia</h2>
+        <p>shereltondennis@gmail.com | +231776109240</p>
+      </div>
+      <div>
+        <p>&copy; <span id="currentyear"></span> Buy Liberia. All rights reserved.</p>
+        <p id="lastModified" class="small"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts/site.js" defer></script>
+  <script>
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      element.select();
+      document.execCommand('copy');
+      alert('Copied to clipboard!');
+    }
+
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById('displayPassword');
+      const button = event.target;
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        button.textContent = 'Hide';
+      } else {
+        passwordField.type = 'password';
+        button.textContent = 'Show';
+      }
+    }
+
+    document.getElementById('buyerSignup').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('buyerFirstName').value;
+      const lastName = document.getElementById('buyerLastName').value;
+      const email = document.getElementById('buyerEmail').value;
+      const phone = document.getElementById('buyerPhone').value;
+      const city = document.getElementById('buyerCity').value;
+      const budget = document.getElementById('buyerBudget').value;
+
+      // Generate username and password
+      const username = 'BUY' + generateRandomCode(6);
+      const password = generatePassword();
+
+      // Store account in localStorage
+      const account = {
+        type: 'buyer',
+        firstName,
+        lastName,
+        email,
+        phone,
+        city,
+        budget,
+        username,
+        password,
+        createdAt: new Date().toISOString()
+      };
+
+      let accounts = JSON.parse(localStorage.getItem('realtorAccounts')) || [];
+      accounts.push(account);
+      localStorage.setItem('realtorAccounts', JSON.stringify(accounts));
+      localStorage.setItem('currentUser', JSON.stringify(account));
+
+      // Display credentials
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('credentialsDisplay').style.display = 'block';
+      document.getElementById('displayUsername').value = username;
+      document.getElementById('displayPassword').value = password;
+    });
+
+    function generateRandomCode(length) {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    function generatePassword() {
+      const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+      const numbers = '0123456789';
+      const symbols = '!@#$%^&*';
+      const all = uppercase + lowercase + numbers + symbols;
+      
+      let password = '';
+      password += uppercase.charAt(Math.floor(Math.random() * uppercase.length));
+      password += lowercase.charAt(Math.floor(Math.random() * lowercase.length));
+      password += numbers.charAt(Math.floor(Math.random() * numbers.length));
+      password += symbols.charAt(Math.floor(Math.random() * symbols.length));
+      
+      for (let i = 0; i < 4; i++) {
+        password += all.charAt(Math.floor(Math.random() * all.length));
+      }
+      
+      return password.split('').sort(() => Math.random() - 0.5).join('');
+    }
+  </script>
+</body>
+</html>
